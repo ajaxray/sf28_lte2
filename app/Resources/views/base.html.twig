@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}Welcome!{% endblock %} | {{ app_name }}</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/AdminLTE/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/AdminLTE/dist/css/AdminLTE.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/AdminLTE/dist/css/skins/skin-blue.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    {% endblock %}
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+<body class="hold-transition skin-blue sidebar-mini {% block bodyClass %}{% endblock %}">
+
+<div class="wrapper">
+
+    <!-- Main Header -->
+    <header class="main-header">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini">{{ app_name }}</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg">{{ app_name }}</span>
+        </a>
+
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            {{ include('_navbar.html.twig') }}
+        </nav>
+
+    </header>
+
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        {{ include('_sidebar.html.twig') }}
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        {{ include('flash_message.html.twig') }}
+
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>{% block pageTitle %}Dashboard <small>statistics and more</small>{% endblock %}{% block titleAction %}{% endblock %}</h1>
+            <div class="breadcrumb">{% block breadcrumb %}{% endblock %}</div>
+        </section>
+
+        <div class="clearfix"></div>
+
+        <!-- Main content -->
+        <section class="content">
+
+            {% block body %}
+                <!-- BEGIN PAGE CONTENT-->
+                <div class="row">
+                    <div class="col-md-12">Here goes the page content.</div>
+                </div>
+                <!-- END PAGE CONTENT-->
+            {% endblock %}
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    {#<footer class="main-footer">
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2015 <a href="#">IslamKosh</a>.</strong>
+    </footer>#}
+
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+{% block javascripts %}
+
+<script src="{{ asset('assets/AdminLTE/plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
+<script src="{{ asset('assets/AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/AdminLTE/dist/js/app.min.js') }}"></script>
+
+{#<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>#}
+{#<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>#}
+<script src="{{ asset('js/app.js') }}"></script>
+
+{% endblock %}
+
+{% block documentReady %}
+<script>
+    jQuery(document).ready(function() {
+        App.init();
+    });
+</script>
+{% endblock %}
+
+</body>

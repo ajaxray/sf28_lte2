@@ -1,0 +1,5 @@
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+app_resources:
+    resource: "@AppBundle/Resources/config/routing.yml"

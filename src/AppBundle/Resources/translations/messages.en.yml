@@ -1,0 +1,5 @@
+app:
+    photo_id:
+        nid: "National ID"
+        passport: "Passport"
+        driving_license: "Driving License"

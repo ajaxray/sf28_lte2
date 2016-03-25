@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block pageTitle %}User Profile : {{ user.name }}{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+
+        <div class="col-md-8">
+
+            <div class="box">
+
+                <div class="box-header">
+                    <h3 class="box-title">{{ user.name }}</h3>
+                </div>
+
+                <div class="box-body">
+                    <dl class="dl-horizontal">
+                        <dt>Username</dt>
+                        <dd>{{ user.username }}</dd>
+
+                        <dt>Email</dt>
+                        <dd>{{ user.email }}</dd>
+
+                        <dt>First Name</dt>
+                        <dd>{{ user.firstName }}</dd>
+
+                        <dt>Last Name</dt>
+                        <dd>{{ user.lastName }}</dd>
+
+                    </dl>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block documentReady %}
+<script>
+
+jQuery(document).ready(function() {
+//    $('a[href="#tab_3"]').on('shown.bs.tab', function (e) {
+//        $('.sidebar-toggle').trigger('click');
+//    });
+});
+
+</script>
+{% endblock %}

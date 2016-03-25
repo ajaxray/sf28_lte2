@@ -1,0 +1,26 @@
+{
+  "name": "Symfony 2.8 with Admin LTE 2",
+  "homepage": "https://github.com/ajaxray/sf28_lte2",
+  "authors": [
+    "Mohammad Emran Hasan <phpfour@gmail.com>",
+    "Anis Ahmd <anis.programmer@gmail.com>"
+  ],
+  "description": "A boilerplate for starting Symfony 2.8 project instantly!",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/assets",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "fontawesome#~4.5.0",
+    "AdminLTE": "admin-lte#~2.3.2",
+    "moment": "~2.11.2"
+  }
+}

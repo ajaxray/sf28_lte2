@@ -1,0 +1,51 @@
+{% extends '::base.html.twig' %}
+
+{% block pageTitle %}User list{% endblock %}
+
+{% block titleAction %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-success btn-xs" href="{{ path('app_user_create') }}"><i class="fa fa-plus"></i> Create User</a>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title"></h3>
+
+            <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-body table-responsive">
+            <table class="table table-hover">
+                <tbody><tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Last login</th>
+                    <th>&nbsp;</th>
+                </tr>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.lastLogin ? user.lastLogin|date('h:i a d/m/Y') : 'Never!' }}</td>
+                    <td>
+                        <a href="{{ url('app_user_show', {'id': user.id }) }}" class="btn btn-default btn-xs">Profile</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="box-footer text-center">
+            {{ pagerfanta(users, 'twitter_bootstrap3') }}
+        </div>
+    </div>
+{% endblock %}

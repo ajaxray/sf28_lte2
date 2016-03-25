@@ -1,0 +1,10 @@
+sylius_resource:
+    resources:
+        app.user:
+            driver: doctrine/orm
+            object_manager: default
+            templates: AppBundle:User
+            classes:
+                model: AppBundle\Entity\User
+                controller: AppBundle\Controller\UserController
+                repository: AppBundle\Repository\UserRepository

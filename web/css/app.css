@@ -1,0 +1,22 @@
+/************* GENERAL *************/
+
+.content-header h1.actions {
+    float: left;
+    margin-bottom: 20px;
+}
+
+/* Elements customization */
+
+textarea.input-lg {
+    font-size: 18px;
+}
+
+.no-border,
+.table.no-border>thead>tr>th,
+.table.no-border>tbody>tr>th,
+.table.no-border>tfoot>tr>th,
+.table.no-border>thead>tr>td,
+.table.no-border>tbody>tr>td,
+.table.no-border>tfoot>tr>td {
+    border: 0;
+}

@@ -1,0 +1,56 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+
+    app.menu_builder:
+        class: AppBundle\Menu\MenuBuilder
+        arguments: [@knp_menu.factory, @security.authorization_checker]
+        tags:
+            - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }
+
+#    app.datatable.task:
+#        class: AppBundle\Datatables\TaskDatatable
+#        tags:
+#            - { name: sg.datatable.view }
+#
+#    app.form.type.task:
+#        class: AppBundle\Form\TaskType
+#        tags:
+#            - { name: form.type, alias: app_task }
+#
+#    app.form.type.task_edit:
+#        class: AppBundle\Form\TaskEditType
+#        tags:
+#            - { name: form.type, alias: app_task_edit }
+#
+#    app.provider.oauth:
+#        class: AppBundle\Security\OAuthUserProvider
+#        arguments: [@fos_user.user_manager, @session, {google: googleId}]
+#
+#    app.google.client:
+#        class: AppBundle\Google\Client
+#        arguments: [%google_oauth2_client_id%, %google_oauth2_client_secret%, %google_oauth2_redirect_uri%, %google_oauth2_scope%, @session]
+#
+#    app.google.drive:
+#        class: AppBundle\Google\Drive
+#        arguments: [@app.google.client]
+#
+#    app.listener.populate_image:
+#        class: AppBundle\EventListener\PopulateImageListener
+#        arguments: [@app.repository.image, @leezy.pheanstalk, @session]
+#        tags:
+#            - { name: kernel.event_listener, event: app.task.post_create, method: onTaskCreate }
+#
+#    app.worker.master:
+#        class: AppBundle\Command\WorkerCommand
+#        tags:
+#            -  { name: console.command }
+#
+#    docudex.task.notify_expiring_docs:
+#        class: AppBundle\Command\ImageProcessorCommand
+#        tags:
+#            -  { name: console.command }
+#            -  { name: worker.task, task: process_image }
