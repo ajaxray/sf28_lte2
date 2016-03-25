@@ -5,12 +5,12 @@ A ready made setup to use as boilerplate for **Symfony 2.8** with **Admin LTE 2*
 
 The following things are provided pre-configured - 
 
-* Beautiful **Admin LTE 2** Template layout 
-* Sample pages (Dashboard and User CRUD) for using Admin LTE 2 design  
-* Working User Entity and Login, Logout etc. using `FOSUserBundle`
-* Configured `SyliusResourceBundle` 
-* Flexible, configurable menu using `KNPMenuBundle`
-* Installation of assets with Bower
+* Layout using *beautiful*, responsive **[Admin LTE 2](https://almsaeedstudio.com/themes/AdminLTE/index.html)** Template 
+* Sample pages (Login, Dashboard and User CRUD) for using Admin LTE 2 design  
+* Working User Entity and Login, Logout etc. using **[FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle)**
+* Configured **[SyliusResourceBundle](https://github.com/Sylius/SyliusResourceBundle)**
+* Flexible, configurable menu using **[KNPMenuBundle](https://github.com/KnpLabs/KnpMenuBundle)**
+* Installation of assets with **[Bower](http://bower.io/)**
 
 
 Installation
