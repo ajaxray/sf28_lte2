@@ -12,6 +12,13 @@ The following things are provided pre-configured -
 * Flexible, configurable menu using **[KNPMenuBundle](https://github.com/KnpLabs/KnpMenuBundle)**
 * Installation of assets with **[Bower](http://bower.io/)**
 
+Screenshots
+----------------
+
+![Login Page](screens/login.png)  
+
+![Dashboard Page](screens/dashboard.png)
+
 
 Installation
 ----------------
@@ -40,7 +47,9 @@ Installation
 
     </VirtualHost>
     ```
-
+    
+    Don't forget to add domain in `hosts` file and reload apache.
+      
 3. Create `.htaccess` file and modify to match your environment:
 
     ```
@@ -64,7 +73,7 @@ Installation
 7. Create an admin user (enter ROLE_SUPER_ADMIN when asked):
 
     ```
-    php app/console fos:create:user admin --super-admin
+    php app/console fos:user:create admin --super-admin
     ```
 
 7. Run the app by visiting: http://my-project.dev
