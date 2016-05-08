@@ -13,8 +13,8 @@ security:
             id: fos_user.user_provider.username
 
     role_hierarchy:
-        ROLE_SUPER_ADMIN:   [ROLE_ADMIN]
-        ROLE_OPERATOR:      [ROLE_USER]
+        ROLE_SUPER_ADMIN:    [ROLE_ADMIN]
+        ROLE_ADMIN:          [ROLE_USER]
 
     firewalls:
         main:
@@ -35,6 +35,7 @@ security:
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/.*, role: ROLE_USER }
 

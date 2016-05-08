@@ -4,7 +4,7 @@
 
 {% block titleAction %}
     {% if is_granted('ROLE_ADMIN') %}
-        <a class="btn btn-success btn-xs" href="{{ path('app_user_create') }}"><i class="fa fa-plus"></i> Create User</a>
+        <a class="btn btn-success btn-xs" href="{{ path('admin_user_create') }}"><i class="fa fa-plus"></i> Create User</a>
     {% endif %}
 {% endblock %}
 

@@ -6,5 +6,5 @@ sylius_resource:
             templates: AppBundle:User
             classes:
                 model: AppBundle\Entity\User
-                controller: AppBundle\Controller\UserController
+                controller: Sylius\Bundle\ResourceBundle\Controller\ResourceController
                 repository: AppBundle\Repository\UserRepository

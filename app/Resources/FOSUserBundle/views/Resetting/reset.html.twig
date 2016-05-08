@@ -1,0 +1,6 @@
+{% extends "FOSUserBundle::layout_boxed.html.twig" %}
+
+{% block message %}Set a new password{% endblock %}
+{% block fos_user_content %}
+{% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
+{% endblock fos_user_content %}

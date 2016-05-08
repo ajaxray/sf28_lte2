@@ -1,0 +1,38 @@
+### User Resource Routes ###
+app_users:
+    path: /users
+    methods: [GET]
+    defaults:
+        _controller: app.controller.user:indexAction
+        _sylius:
+            paginate: 20
+
+app_user_show:
+    path: /users/{id}
+    methods: [GET]
+    defaults:
+        _controller: app.controller.user:showAction
+#        _sylius:
+#            repository:
+#                method: ifCustomMethod
+#                arguments: [$methodParam]
+
+
+#user_update:
+#    path: /users/{id}/edit
+#    methods: [GET, PUT]
+#    options:
+#        expose: true
+#    defaults:
+#        _controller: app.controller.user:updateAction
+#        _sylius:
+#            form: app_user_edit
+#
+
+#user_delete:
+#    path: /users/{id}
+#    methods: [DELETE]
+#    options:
+#        expose: true
+#    defaults:
+#        _controller: app.controller.user:deleteAction

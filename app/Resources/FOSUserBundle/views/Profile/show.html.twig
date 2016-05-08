@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block pageTitle %}User Profile : {{ user.name }}{% endblock %}
+
+{% block body %}
+
+    {% include 'flash_message.html.twig' %}
+
+    {% block fos_user_content %}
+        {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+    {% endblock fos_user_content %}
+
+{% endblock %}

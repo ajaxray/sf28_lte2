@@ -30,6 +30,31 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var string
+     */
+    protected $username;
+
+    /**
+     * @var string
+     */
+    protected $usernameCanonical;
+
+    /**
+     * @var string
+     */
+    protected $email;
+
+    /**
+     * @var boolean
+     */
+    protected $enabled;
+
+    /**
+     * @var string
+     */
+    protected $confirmationToken;
+
+    /**
      * @ORM\Column(type="string", length=25, nullable=true)
      */
     private $firstName;
@@ -38,6 +63,12 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=25, nullable=true)
      */
     private $lastName;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $designation;
+
 
     /**
      * @var string
@@ -120,19 +151,110 @@ class User extends BaseUser
     /**
      * @return string
      */
-    public function getRole()
+    public function getEmail()
     {
-        if ($this->hasRole('ROLE_SUPER_ADMIN')) {
-            return 'super_admin';
-        }
-
-        if ($this->hasRole('ROLE_ADMIN')) {
-            return 'admin';
-        }
-
-        if ($this->hasRole('ROLE_user')) {
-            return 'contributor';
-        }
+        return $this->email;
     }
 
+    /**
+     * @param string $email
+     *
+     * @return $this
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * @param boolean $enabled
+     *
+     * @return $this
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     *
+     * @return $this
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDesignation()
+    {
+        return $this->designation;
+    }
+
+    /**
+     * @param mixed $designation
+     */
+    public function setDesignation($designation)
+    {
+        $this->designation = $designation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getConfirmationToken()
+    {
+        return $this->confirmationToken;
+    }
+
+    /**
+     * @param string $confirmationToken
+     *
+     * @return $this
+     */
+    public function setConfirmationToken($confirmationToken)
+    {
+        $this->confirmationToken = $confirmationToken;
+
+        return $this;
+    }
+
+    public function getRole()
+    {
+        $roles = $this->getRoles();
+        if(0 == count($roles)) {
+            return false;
+        } else if(1 == count($roles)) {
+            return trim($roles[0], 'ROLE_');
+        } else if(2 == count($roles) && in_array('ROLE_USER', $roles)) {
+            array_splice($roles, array_search('ROLE_USER', $roles), 1);
+            return trim(current($roles), 'ROLE_');
+        } else {
+            return implode(', ', $roles);
+        }
+        var_dump($roles);
+        die('Died in ' . __FILE__ . ' at line ' . __LINE__);
+    }
 }

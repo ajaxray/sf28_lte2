@@ -28,9 +28,14 @@ class MenuBuilder
         $menu->addChild('Dashboard', ['route' => 'dashboard'])
             ->setAttribute('icon', 'fa fa-dashboard')
         ;
-//        $menu->addChild('Students', ['route' => 'app_students'])
-//             ->setAttribute('icon', 'fa fa-user')
-//        ;
+
+        if ($this->authorizationChecker->isGranted('ROLE_ADMIN')) {
+            $menu->addChild('Users', ['route' => 'app_users'])
+                ->setAttribute('icon', 'fa fa-user')
+            ;
+        }
+
+// Example of adding child menu items with dropdown
 //
 //        $menu->addChild('Tasks')
 //            ->setAttribute('dropdown', true)
