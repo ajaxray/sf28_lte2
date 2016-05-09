@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 use Symfony\Component\Validator\Constraints as Assert;
@@ -20,7 +21,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class User extends BaseUser
 {
-    use TimestampableEntity;
+    use TimestampableEntity,
+        BlameableEntity;
 
     /**
      * @ORM\Id
@@ -247,14 +249,12 @@ class User extends BaseUser
         if(0 == count($roles)) {
             return false;
         } else if(1 == count($roles)) {
-            return trim($roles[0], 'ROLE_');
+            return str_replace('ROLE_', '', $roles[0]);
         } else if(2 == count($roles) && in_array('ROLE_USER', $roles)) {
             array_splice($roles, array_search('ROLE_USER', $roles), 1);
-            return trim(current($roles), 'ROLE_');
+            return str_replace('ROLE_', '', $roles[0]);
         } else {
             return implode(', ', $roles);
         }
-        var_dump($roles);
-        die('Died in ' . __FILE__ . ' at line ' . __LINE__);
     }
 }

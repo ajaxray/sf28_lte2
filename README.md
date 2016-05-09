@@ -15,9 +15,11 @@ The following things are provided pre-configured -
 Screenshots
 ----------------
 
-![Login Page](screens/login.png)  
-
 ![Dashboard Page](screens/dashboard.png)
+
+![User List](screens/user_list.png)
+
+![Profile Page](screens/profile.png)
 
 
 Installation
@@ -70,7 +72,7 @@ Installation
     php app/console doctrine:schema:create
     ```
 
-7. Create an admin user (enter ROLE_SUPER_ADMIN when asked):
+7. Create a super admin to access dashboard:
 
     ```
     php app/console fos:user:create admin --super-admin

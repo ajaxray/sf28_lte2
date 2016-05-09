@@ -23,7 +23,7 @@
 <!-- END HEAD -->
 
 <!-- BEGIN BODY -->
-<body class="hold-transition skin-blue sidebar-mini {% block bodyClass %}{% endblock %}">
+<body class="{% block bodyClass %}hold-transition skin-blue sidebar-mini{% endblock %}">
 
 <div class="wrapper">
 
@@ -53,8 +53,6 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
-        {{ include('flash_message.html.twig') }}
-
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>{% block pageTitle %}Dashboard <small>statistics and more</small>{% endblock %}{% block titleAction %}{% endblock %}</h1>
@@ -65,6 +63,8 @@
 
         <!-- Main content -->
         <section class="content">
+
+            {{ include('flash_message.html.twig') }}
 
             {% block body %}
                 <!-- BEGIN PAGE CONTENT-->

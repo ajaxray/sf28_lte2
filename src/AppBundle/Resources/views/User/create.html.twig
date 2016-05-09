@@ -2,23 +2,21 @@
 
 {% set editing = targetUser is defined ? true : false %}
 
-{% block pageTitle %}Create New User{% endblock %}
+{% block title %}{{ editing ? 'Update' : 'Create' }} User{% endblock %}
+{% block pageTitle %}{{ editing ? 'Update ' ~ targetUser.username : 'Create new user' }}{% endblock %}
 
 {% block body %}
 
     <div class="row">
 
-        <div class="col-md-8 col-sm-12">
-            <div class="portlet light">
-                <div class="portlet-title">
-                    <div class="caption caption-md">
-                        <i class="icon-bar-chart theme-font hide"></i>
-                        <span class="caption-subject theme-font bold uppercase">
-                            {{ editing ? 'Update ' ~ targetUser.name : 'Create new user' }}
-                        </span>
-                    </div>
+        <div class="col-md-10">
+            <div class="box box-primary">
+
+                <div class="box-header with-border">
+                    <h3 class="box-title">Update Basic Information</h3>
                 </div>
-                <div class="portlet-body">
+
+                <div class="box-body">
                     <form class="form-horizontal" role="form" method="post">
                         <div class="form-body">
                             {% set error_list = [] %}
@@ -77,15 +75,15 @@
                                 <label class="col-md-3 control-label required">User Type</label>
                                 <div class="col-md-9">
                                     <select name="user_type" class="form-control">
-                                        <option value="admin {% if editing and 'ROLE_ADMIN' in targetUser.roles %}selected="selected"{% endif %}">Admin</option>
-                                        <option value="user" {% if editing and 'ROLE_USER' in targetUser.roles %}selected="selected"{% endif %}>User</option>
+                                        <option value="admin" {% if editing and 'ROLE_ADMIN' in targetUser.roles %}selected="selected"{% endif %}>Admin</option>
+                                        <option value="operator" {% if editing and 'ROLE_OPERATOR' in targetUser.roles %}selected="selected"{% endif %}>Operator</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                         <div class="form-actions">
                             <div class="row">
-                                <div class="col-md-offset-3 col-md-9">
+                                <div class="col-md-offset-3 col-md-6">
                                     <button type="submit" class="btn btn-primary">{{ editing ? 'Update' : 'Create' }} User</button>
                                     {% if editing %}
                                         <a class="btn default" href="{{ path('app_user_show', {'id': targetUser.id }) }}">Cancel</a>
@@ -98,6 +96,7 @@
                     </form>
                 </div>
             </div>
+
         </div>
 
     </div>

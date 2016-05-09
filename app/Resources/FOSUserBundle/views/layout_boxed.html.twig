@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login | {{ app_name }}</title>
+    <title>{% block title %}{% endblock %} | {{ app_name }}</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/AdminLTE/bootstrap/css/bootstrap.min.css') }}">
@@ -34,6 +34,8 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
         <h4 class="login-box-msg text-bold text-info">{% block message %}{% endblock %}</h4>
+
+        {{ include('flash_message.html.twig') }}
         {% block fos_user_content %}{% endblock %}
     </div>
     <!-- /.login-box-body -->

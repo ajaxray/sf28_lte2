@@ -33,7 +33,7 @@ profile:
 
 # Password change
 change_password:
-    submit: Change password
+    submit: Set password
     flash:
         success: The password has been changed
 
@@ -54,7 +54,7 @@ registration:
 
             Regards,
 
-            IslamKosh Entry Panel
+            %app_name% System
 
 # Password resetting
 resetting:
@@ -77,7 +77,7 @@ resetting:
 
             Regards,
 
-            IslamKosh Entry Panel
+            %app_name% System
 
 # Global strings
 layout:

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% block title %}Welcome!{% endblock %} | {{ app_name }}</title>
+    <title>{% block title %}{{ app_name }}{% endblock %}</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/AdminLTE/bootstrap/css/bootstrap.min.css') }}">
@@ -25,10 +25,19 @@
 <!-- BEGIN BODY -->
 <body class="hold-transition login-page">
 
+<div class="container">
 {% block body %}
-    {% block fos_user_content %}{% endblock %}
-{% endblock %}
 
+        <div class="row">
+            <br>
+            <br>
+            <div class="well col-md-offset-1 col-md-10">
+                {% block fos_user_content %}{% endblock %}
+            </div>
+        </div>
+
+{% endblock %}
+</div>
 <!-- REQUIRED JS SCRIPTS -->
 {% block javascripts %}
 

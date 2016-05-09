@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 
-{% block pageTitle %}User list{% endblock %}
+{% block title %}User list{% endblock %}
+{% block pageTitle %}{{ block('title') }}{% endblock %}
 
 {% block titleAction %}
     {% if is_granted('ROLE_ADMIN') %}
@@ -28,6 +29,7 @@
                 <tbody><tr>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Type</th>
                     <th>Last login</th>
                     <th>&nbsp;</th>
                 </tr>
@@ -35,6 +37,7 @@
                 <tr>
                     <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
+                    <td>{{ user.role }}</td>
                     <td>{{ user.lastLogin ? user.lastLogin|date('h:i a d/m/Y') : 'Never!' }}</td>
                     <td>
                         <a href="{{ url('app_user_show', {'id': user.id }) }}" class="btn btn-default btn-xs">Profile</a>
