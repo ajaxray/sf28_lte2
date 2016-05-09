@@ -4,6 +4,8 @@
 /composer.phar
 /vendor/
 /web/bundles/
+/web/js/*
+/web/css/*
 /web/assets/**
 !web/assets/**/
 !web/assets/.gitkeep

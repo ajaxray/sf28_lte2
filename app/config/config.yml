@@ -97,25 +97,3 @@ stof_doctrine_extensions:
             timestampable: true
             blameable: true
             uploadable: true
-
-# PheanstalkBundle
-#leezy_pheanstalk:
-#    enabled: true
-#    pheanstalks:
-#        primary:
-#            server: 127.0.0.1
-#            default: true
-
-# AuditBundle
-#xiidea_easy_audit:
-#    entity_class : AppBundle\Entity\AuditLog
-#    user_property : username
-#    doctrine_entities :
-#        AppBundle\Entity\Audit : [created, updated, deleted]
-#    events :
-#        - security.interactive_login
-#        - security.authentication.failure
-#        - fos_user.security.implicit_login
-#        - fos_user.change_password.edit.completed
-#    logger_channel:
-#        xiidea.easy_audit.logger.service: ["info"]

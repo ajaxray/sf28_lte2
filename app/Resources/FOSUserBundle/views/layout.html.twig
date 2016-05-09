@@ -7,12 +7,18 @@
     <title>{% block title %}{{ app_name }}{% endblock %}</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('assets/AdminLTE/bootstrap/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        <link rel="stylesheet" href="{{ asset('assets/AdminLTE/dist/css/AdminLTE.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/AdminLTE/dist/css/skins/skin-blue.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+        {% stylesheets
+        'assets/AdminLTE/bootstrap/css/bootstrap.min.css'
+        'assets/font-awesome/css/font-awesome.min.css'
+        'assets/AdminLTE/dist/css/AdminLTE.min.css'
+        'assets/AdminLTE/dist/css/skins/skin-blue.min.css'
+        'assets/AdminLTE/plugins/iCheck/square/blue.css'
+        '@AppBundle/Resources/public/css/app.css'
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
     {% endblock %}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -41,13 +47,17 @@
 <!-- REQUIRED JS SCRIPTS -->
 {% block javascripts %}
 
-    <script src="{{ asset('assets/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
-    <script src="{{ asset('assets/AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/AdminLTE/dist/js/app.min.js') }}"></script>
+    {% javascripts
+    'assets/AdminLTE/plugins/jQuery/jQuery-2.2.0.min.js'
+    'assets/AdminLTE/bootstrap/js/bootstrap.min.js'
+    'assets/AdminLTE/dist/js/app.min.js'
+    'assets/AdminLTE/plugins/iCheck/icheck.min.js'
+    '@AppBundle/Resources/public/js/app.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 
-    <script src="{{ asset('assets/moment/min/moment.min.js') }}"></script>
-
-    <script src="{{ asset('js/app.js') }}"></script>
+{% endblock %}
 
 {% block documentReady %}
     <script>
@@ -55,8 +65,6 @@
             App.init();
         });
     </script>
-{% endblock %}
-
 {% endblock %}
 
 </body>

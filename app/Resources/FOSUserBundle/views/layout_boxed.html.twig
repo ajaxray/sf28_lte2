@@ -4,16 +4,21 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% block title %}{% endblock %} | {{ app_name }}</title>
+    <title>Login | {{ app_name }}</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('assets/AdminLTE/bootstrap/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        <link rel="stylesheet" href="{{ asset('assets/AdminLTE/dist/css/AdminLTE.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/AdminLTE/dist/css/skins/skin-blue.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/AdminLTE/plugins/iCheck/square/blue.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+        {% stylesheets
+        'assets/AdminLTE/bootstrap/css/bootstrap.min.css'
+        'assets/font-awesome/css/font-awesome.min.css'
+        'assets/AdminLTE/dist/css/AdminLTE.min.css'
+        'assets/AdminLTE/dist/css/skins/skin-blue.min.css'
+        'assets/AdminLTE/plugins/iCheck/square/blue.css'
+        '@AppBundle/Resources/public/css/app.css'
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
     {% endblock %}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -35,7 +40,6 @@
     <div class="login-box-body">
         <h4 class="login-box-msg text-bold text-info">{% block message %}{% endblock %}</h4>
 
-        {{ include('flash_message.html.twig') }}
         {% block fos_user_content %}{% endblock %}
     </div>
     <!-- /.login-box-body -->
@@ -46,24 +50,24 @@
 <!-- REQUIRED JS SCRIPTS -->
 {% block javascripts %}
 
-<script src="{{ asset('assets/AdminLTE/plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
-<script src="{{ asset('assets/AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('assets/AdminLTE/plugins/iCheck/icheck.min.js') }}"></script>
+    {% javascripts
+    'assets/AdminLTE/plugins/jQuery/jQuery-2.2.0.min.js'
+    'assets/AdminLTE/bootstrap/js/bootstrap.min.js'
+    'assets/AdminLTE/dist/js/app.min.js'
+    'assets/AdminLTE/plugins/iCheck/icheck.min.js'
+    '@AppBundle/Resources/public/js/app.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 
-<script src="{{ asset('js/app.js') }}"></script>
-
-{% block documentReady %}
-<script>
-    jQuery(document).ready(function() {
-        $('input.icheck').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
-    });
-</script>
 {% endblock %}
 
+{% block documentReady %}
+    <script>
+        jQuery(document).ready(function() {
+            App.init();
+        });
+    </script>
 {% endblock %}
 
 </body>

@@ -1,4 +1,4 @@
-Symfony 2.8 with Admin LTE
+Symfony 2.8 with Admin LTE 2
 ==============
 
 A ready made setup to use as boilerplate for **Symfony 2.8** with **Admin LTE 2** admin template
