@@ -138,7 +138,7 @@ class UserController extends Controller
             }
 
         } else {
-            $this->addFlash('error',"Something went wrong! Did you select an image?");
+            $this->addFlash('error',"Something went wrong! Did you select a photo?");
         }
 
         return $this->redirect($this->generateUrl('app_user_show', ['id' => $user->getId()]));
