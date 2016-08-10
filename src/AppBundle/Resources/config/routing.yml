@@ -2,4 +2,4 @@
 
 app_users:
     resource: "@AppBundle/Resources/config/routing_users.yml"
-    prefix: /admin
+    prefix: /users

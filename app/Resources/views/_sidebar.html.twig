@@ -5,8 +5,8 @@
     {% if app.user %}
     <div class="user-panel">
         <div class="pull-left image">
-
-            <img src="/images/avatars/{{ app.user.profilePicture|default('default.jpg') }}" class="img-circle" alt="User Image">
+            {% set avatar = app.user.avatar ? app.user.avatar.url : asset('images/avatar.png') %}
+            <img src="{{ avatar }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
             <p>{{ app.user.name }}</p>

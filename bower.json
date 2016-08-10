@@ -21,6 +21,7 @@
   "dependencies": {
     "font-awesome": "fontawesome#~4.5.0",
     "AdminLTE": "admin-lte#~2.3.2",
-    "moment": "~2.11.2"
+    "moment": "~2.11.2",
+    "bootstrap-file-field": "^1.2.0"
   }
 }

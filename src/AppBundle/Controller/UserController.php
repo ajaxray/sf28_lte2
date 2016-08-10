@@ -2,10 +2,12 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Avatar;
 use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
@@ -104,6 +106,40 @@ class UserController extends Controller
 
         $this->get('fos_user.user_manager')->updateUser($user, true);
         $this->addFlash('success', $message);
+
+        return $this->redirect($this->generateUrl('app_user_show', ['id' => $user->getId()]));
+    }
+
+    /**
+     * @Route("/profile/{id}/change-avatar", name="user_change_avatar", methods="POST")
+     */
+    public function changeAvatarAction(User $user, Request $request)
+    {
+        $file = $request->files->get('avatar');
+        if($file instanceof UploadedFile && $file->isValid()) {
+
+            if($file->getSize() > 20000) {
+                $this->addFlash('error',"File size is too large ({$file->getSize()} bytes)! try smaller photo.");
+            } else {
+                $uploadableManager = $this->get('stof_doctrine_extensions.uploadable.manager');
+                $avatar          = new Avatar();
+
+                $uploadableManager->markEntityToUpload($avatar, $file);
+
+                if($user->getAvatar()) {
+                    @unlink($user->getAvatar()->getFilePath());
+                    $this->getDoctrine()->getManager()->remove($user->getAvatar());
+                }
+                $this->getDoctrine()->getManager()->persist($avatar);
+                $user->setAvatar($avatar);
+
+                $this->getDoctrine()->getManager()->flush();
+                $this->addFlash('success','Avatar changed!');
+            }
+
+        } else {
+            $this->addFlash('error',"Something went wrong! Did you select an image?");
+        }
 
         return $this->redirect($this->generateUrl('app_user_show', ['id' => $user->getId()]));
     }

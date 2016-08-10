@@ -1,6 +1,6 @@
 ### User Resource Routes ###
 app_users:
-    path: /users
+    path: /
     methods: [GET]
     defaults:
         _controller: app.controller.user:indexAction
@@ -8,7 +8,7 @@ app_users:
             paginate: 20
 
 app_user_show:
-    path: /users/{id}
+    path: /{id}
     methods: [GET]
     defaults:
         _controller: app.controller.user:showAction

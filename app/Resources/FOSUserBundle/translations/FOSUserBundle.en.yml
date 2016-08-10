@@ -54,7 +54,7 @@ registration:
 
             Regards,
 
-            %app_name% System
+            SET-NAME-IN-TRANSLATION - app/Resources/FOSUserBundle/translations/FOSUserBundle.en.yml
 
 # Password resetting
 resetting:
@@ -77,7 +77,7 @@ resetting:
 
             Regards,
 
-            %app_name% System
+            SET-NAME-IN-TRANSLATION - app/Resources/FOSUserBundle/translations/FOSUserBundle.en.yml
 
 # Global strings
 layout:

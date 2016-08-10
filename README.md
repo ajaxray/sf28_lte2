@@ -71,14 +71,21 @@ Installation
     php app/console doctrine:database:create
     php app/console doctrine:schema:create
     ```
+    
+7. Install and dump assets:
 
-7. Create a super admin to access dashboard:
+    ```
+    php app/console assets:install --symlink
+    php app/console assetic:dump
+    ```
+    
+8. Create a super admin to access dashboard:
 
     ```
     php app/console fos:user:create admin --super-admin
     ```
 
-7. Run the app by visiting: http://my-project.dev
+9. Run the app by visiting: http://my-project.dev
 
 Enjoy!
 

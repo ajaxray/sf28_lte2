@@ -9,6 +9,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use JMS\Serializer\Annotation as Serialize;
 
 /**
  * User
@@ -71,13 +72,12 @@ class User extends BaseUser
      */
     private $designation;
 
-
     /**
-     * @var string
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Avatar")
      *
-     * @ORM\Column(name="profile_picture", type="string", nullable=true)
-     */
-    private $profilePicture;
+     * @Serialize\MaxDepth(1)
+     **/
+    private $avatar;
 
     /**
      * @return string
@@ -129,25 +129,6 @@ class User extends BaseUser
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getProfilePicture()
-    {
-        return $this->profilePicture;
-    }
-
-    /**
-     * @param string $profilePicture
-     *
-     * @return User
-     */
-    public function setProfilePicture($profilePicture)
-    {
-        $this->profilePicture = $profilePicture;
-        return $this;
     }
 
     /**
@@ -221,6 +202,22 @@ class User extends BaseUser
     public function setDesignation($designation)
     {
         $this->designation = $designation;
+    }
+
+    /**
+     * @return Avatar
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @param Avatar $avatar
+     */
+    public function setAvatar(Avatar $avatar)
+    {
+        $this->avatar = $avatar;
     }
 
     /**

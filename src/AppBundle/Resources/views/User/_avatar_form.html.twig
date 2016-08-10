@@ -1,0 +1,30 @@
+<form class="form-horizontal" action="{{ path('user_change_avatar', {'id': user.id}) }}" role="form" method="post" enctype="multipart/form-data">
+    <div class="form-body">
+        <div class="form-group">
+            <div class="col-md-12">
+                {% if user.avatar %}
+                    <img src="{{ user.avatar.url }}" alt="Profile picture" width="150px" height="150px">
+                    <hr>
+                {% else %}
+                    <p>No profile picture was uploaded.</p>
+                {% endif %}
+
+                {% if user.id == app.user.id %}
+                    <button type="submit" class="btn btn-primary upload">
+                        <i class="fa fa-upload"></i> Upload
+                    </button>
+
+                    <input type="file" name="avatar"
+                           data-field-type="bootstrap-file-filed"
+                           data-file-types="image/png,image/jpeg"
+                           data-label="Select Photo">
+
+
+                    <p class="help-block font-grey-cascade">Only <b>image (jpeg, png)</b> files are acceptable. Maximum 20kb accepted. Squire ratio recommended.</p>
+                    <ul class="list-unstyled fileList"></ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</form>
