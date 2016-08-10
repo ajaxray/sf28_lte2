@@ -7,7 +7,7 @@ The following things are provided pre-configured -
 
 * Layout using beautiful, responsive **[Admin LTE 2](https://almsaeedstudio.com/themes/AdminLTE/index.html)** Template 
 * Sample working pages (Login, Dashboard and User CRUD) for using Admin LTE 2 design  
-* Working User Entity and Login, Logout etc. using **[FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle)**
+* Working User Entity and Login, Logout, Password reset, Profile picture etc. using **[FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle)**
 * Configured **[SyliusResourceBundle](https://github.com/Sylius/SyliusResourceBundle)**
 * Flexible, configurable menu using **[KNPMenuBundle](https://github.com/KnpLabs/KnpMenuBundle)**
 * Installation of assets with **[Bower](http://bower.io/)**
@@ -17,7 +17,7 @@ Screenshots
 
 ![Dashboard Page](screens/dashboard.png)
 
-![User List](screens/user_list.png)
+![User List](screens/user_list.jpg)
 
 ![Profile Page](screens/profile.png)
 
@@ -64,6 +64,9 @@ Installation
     composer install --prefer-dist
     bower install
     ```
+    If you require any other common js tool (e,g, `moment.js`, `bootstrap-datepicker` etc.)
+     don't forget to check `web/assets/AdminLTE/plugins/` directory first. 
+     Good number of common tools/plugins are already available there. 
 
 6. Prepare the database:
 
