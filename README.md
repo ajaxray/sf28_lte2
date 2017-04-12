@@ -91,11 +91,3 @@ Installation
 9. Run the app by visiting: http://my-project.dev
 
 Enjoy!
-
-----
-
-Usages notes
---------------------
-
-**User Creation Strategy :** Users will be created by admin from admin panel. 
-Then user will receive a welcome email including a link to reset his password.   

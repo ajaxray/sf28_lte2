@@ -30,7 +30,9 @@ class UserController extends Controller
                 $manager = $this->get('fos_user.user_manager');
                 $helper = $this->get('fos_user.util.user_manipulator');
 
-                $pass = substr(md5(uniqid()), 0, 8);
+                $isRandomPass = isset($data['setRandomPass']);
+
+                $pass = $isRandomPass ? substr(md5(uniqid()), 0, 8) : $data['manualPass'];
                 $user = $helper->create($data['username'], $pass, $data['email'], true, false);
 
                 if(isset($data['firstName'])) $user->setFirstName($data['firstName']);
@@ -41,7 +43,10 @@ class UserController extends Controller
                 $manager->updateUser($user, true);
                 $this->getDoctrine()->getManager()->flush();
 
-                $this->_welcomeResetRequest($user, $data['user_type']);
+                if($isRandomPass) {
+                    $this->_welcomeResetRequest($user, $data['user_type']);
+                }
+
                 $this->addFlash('success','User created successfully.');
 
                 return $this->redirect($this->generateUrl('app_users'));
@@ -75,6 +80,11 @@ class UserController extends Controller
                     $roles = in_array('ROLE_SUPER_ADMIN', $user->getRoles()) ? ['ROLE_SUPER_ADMIN'] : [];
                     $roles[] = 'ROLE_'. strtoupper($data['user_type']);
                     $user->setRoles($roles);
+                }
+
+                if(! empty($data['manualPass'])) {
+                    $this->get('fos_user.util.user_manipulator')
+                        ->changePassword($user->getUsername(), $data['manualPass']);
                 }
 
                 $this->get('fos_user.user_manager')->updateUser($user, true);

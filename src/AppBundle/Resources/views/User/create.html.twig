@@ -80,6 +80,29 @@
                                     </select>
                                 </div>
                             </div>
+                            {% if not editing %}
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">&nbsp;</label>
+                                <div class="col-md-9">
+                                    <div class="checkbox icheck">
+                                        <label for="manual-pass">
+                                            <input type="checkbox" class="icheck" name="setRandomPass" id="setRandomPass"> User will set his password
+                                        </label>
+                                        <span class="help-block">If checked, the user will get an email with password setting link.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            <div class="form-group" id="manualPassRow">
+                                <label class="col-md-3 control-label required">Password</label>
+                                <div class="col-md-9">
+                                    <input type="text" name="manualPass" id="manualPass" class="form-control" value="" />
+                                    {% if editing %}
+                                        <span class="help-block">Leave empty to keep password unchanged</span>
+                                    {% endif %}
+                                </div>
+                            </div>
                         </div>
                         <div class="form-actions">
                             <div class="row">
@@ -107,13 +130,21 @@
 <script>
 
     $(document).ready(function() {
+
+        App.init();
+
         $('#email').on('blur', function(e) {
             if (!$('#username').prop('readonly')) {
                 var email = $(this).val();
                 $('#username').val(email.substr(0, email.indexOf('@')));
             }
         });
-        $('.icheck').iCheck();
+        $('#setRandomPass').on('ifChecked', function(e) {
+            $('#manualPassRow').slideUp();
+        });
+        $('#setRandomPass').on('ifUnchecked', function(e) {
+            $('#manualPassRow').slideDown();
+        });
 
     });
 
